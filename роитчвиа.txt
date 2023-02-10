@@ -1,0 +1,98 @@
+Dim m(15) As Byte, i As Byte, x As Byte, pr As Long, s0 As String, sra As Single, srg As Single, r As Integer, sum As Long, s1 As String
+For i = 0 To 14 
+    Do While m(i) = 0 'Заполнение массива
+     x = Int(Rnd * 10)
+     m(i) = x
+    Loop
+    sum = sum + m(i) 'сумма всех члевон массива
+    pr = pr * m(i) произведение всех членов массива
+    s0 = s0 & m(i) & "  " 
+Next i 
+sra = s / 15 среднее арифметическое 
+srg = pr ^ 1 / 15 среднее геометрическое 
+r = Int(sra - srg) разнича между средними и откидывается дробная часть
+If Abs(r) Mod 2 = 0 Then если кратное двум
+    For i = 0 To 14 
+        If i Mod 2 = 0 Then
+            m(i) = 0
+        End If номер элемента чётный - заменяем нулями
+        s1 = s1 & m(i) & "  " 
+    Next i 
+    MsgBox (s0 & vbNewLine & s1)
+Else если не кратна двум считается сумма квадратов
+    sum = 0 
+    For i = 0 To 14
+     sum = sum + m(i) * m(i)
+    Next i
+    MsgBox (s0 & vbNewLine & s)
+End If
+
+
+Sub new3()
+Dim c(15) As Byte, i As Byte, x As Byte, sl As String, sum As Integer, sra As Single, mo As Single
+For i = 0 To 14
+    Do While c(i) = 0 заполнение массива 
+     x = Int(Rnd * 10)
+     c(i) = x
+    Loop
+    sl = sl & c(i) & "  "
+    sum = sum + c(i)
+Next i
+sra = sum / 15
+mo = 0 максимальное отклонение
+For i = 0 To 14
+    If Abs(c(i) - sra) > mo Then если модуль разности между элементом массива и средним ариф. больше, чем макс. откл.
+        mo = Abs(c(i) - sra) присваиваем значание этой разности
+    End If
+Next i
+MsgBox (sl & vbNewLine & "сред ариф=" & sra & " макс откл =" & mo)
+End sub
+
+Sub new4()
+Dim a(12) As Byte, i As Byte, x As Byte, sl As String, s2 As String, sum As Integer, sra As Byte
+For i = 0 To 11
+    Do While a(i) = 0
+     x = Int(Rnd * 10)
+     a(i) = x
+    Loop
+    s1 = s1 & a(i) & "  "
+    sum = sum + a(i)
+Next i
+sra = Int(s / 12)
+For i = 0 To 11
+    If a(i) < sra Then
+        a(i) = 0
+    Else
+        a(i) = 1
+    End If
+    s2 = s2 & a(i) & "  "
+Next i
+MsgBox (sl & vbNewLine & sra & vbNewLine & s2)
+End sub
+
+Sub new5()
+Dim c(8) As Integer, b(8) As Integer, i As Byte, x As Integer, s1 As String, s2 As String, s3 As String
+For i = 0 To 7
+    Do While c(i) = 0
+     x = Int(Rnd * 100)
+     c(i) = x
+    Loop
+    s1 = s1 & c(i) & "  "
+Next i
+For i = 0 To 7
+    Do While b(i) = 0
+     x = Int(Rnd * 100)
+     b(i) = x
+    Loop
+    s2 = s2 & b(i) & "  "
+Next i
+For i = 0 To 7
+    If c(i) Mod 5 = 0 Then
+        b(i) = b(i) * 5
+    Else
+        b(i) = 0
+    End If
+    s3 = s3 & b(i) & "  "
+Next i
+MsgBox ("c1: " & s1 & vbNewLine & "b1: " & s2 & vbNewLine & "b2: " & s3)
+End sub
